@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "postbuild": "ts-paths",
+    "start": "nodemon",
+    "build": "tsc",
+    "dev": "nodemon"
+  },
+  "watch": ["src"],
+  "ext": "ts,json",
+  "ignore": [],
+  "exec": "ts-node src/config/server.ts"
+}
