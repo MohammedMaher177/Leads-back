@@ -1,12 +1,10 @@
 
-
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "../helper/AppError/AppError";
 
 const keys = ["body", "params", "query", "headers", "file"];
 export const validate = (schema: any) => {
     return (req: Request, res: Response, next: NextFunction) => {
-
         keys.forEach((key) => {
             if (schema[key]) {
                 const value = (req as any)[key];

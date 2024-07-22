@@ -4,6 +4,9 @@ export interface ILeads extends Document {
     name: string;
     status: 'newLeads' | 'contacted';
     date: Date;
+    query: string
+    leadSrc: string;
+    propertyType: string
 }
 
 interface ILeadStatics extends Model<ILeads> {
@@ -11,10 +14,10 @@ interface ILeadStatics extends Model<ILeads> {
 }
 
 const LeadsSchema = new Schema<ILeads>({
-    name: {
-        type: String,
-        required: true,
-    },
+    name: { type: String, required: true },
+    query: String,
+    leadSrc: String,
+    propertyType: String,
     status: {
         type: String,
         enum: ['newLeads', 'contacted'],
@@ -28,11 +31,11 @@ const LeadsSchema = new Schema<ILeads>({
 
 LeadsSchema.statics.findByName = function (
     name: string
-  ): Promise<ILeads | null> {
+): Promise<ILeads | null> {
     return this.findOne({
-      name: { $regex: new RegExp("^" + name + "$", "i") },
+        name: { $regex: new RegExp("^" + name + "$", "i") },
     });
-  };
+};
 
 const Leads = model<ILeads, ILeadStatics>('Leads', LeadsSchema);
 
