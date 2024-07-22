@@ -3,7 +3,7 @@ import express, { Express } from "express";
 dotenv.config();
 import bootstrap from "./bootstrap";
 const app: Express = express();
-const PORT: number = parseInt(process.env.PORT as string, 10) || 3001;
+const PORT: number = parseInt(process.env.PORT as string, 10) || 3003;
 
 bootstrap(app);
 

@@ -14,7 +14,7 @@ interface ILeadStatics extends Model<ILeads> {
 }
 
 const LeadsSchema = new Schema<ILeads>({
-    name: { type: String, required: true },
+    name: { type: String, required: true, trim: true },
     query: String,
     leadSrc: String,
     propertyType: String,
@@ -33,7 +33,7 @@ LeadsSchema.statics.findByName = function (
     name: string
 ): Promise<ILeads | null> {
     return this.findOne({
-        name: { $regex: new RegExp("^" + name + "$", "i") },
+        name: { $regex: new RegExp("^" + name.trim() + "$", "i") },
     });
 };
 
