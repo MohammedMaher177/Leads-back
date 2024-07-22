@@ -15,7 +15,9 @@ const bootstrap = (app: Express) => {
   app.use(cors());
   app.use(morgan("dev"));
   app.use(appRouter);
-
+  app.get('/', (req: Request, res: Response) => {
+    res.send('Hello World');
+  });
   app.use((err: AppError, req: Request, res: Response, next: NextFunction) => {
     console.log({ err });
 
@@ -24,9 +26,10 @@ const bootstrap = (app: Express) => {
     process.env.MODE == "PRODUCTION"
       ? res.status(code).json({ message: "Error", success: false, error })
       : res
-          .status(code)
-          .json({ message: "Error", success: false, error, stack: err.stack });
+        .status(code)
+        .json({ message: "Error", success: false, error, stack: err.stack });
   });
+
 };
 
 export default bootstrap;
