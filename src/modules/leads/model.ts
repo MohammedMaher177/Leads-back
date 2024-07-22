@@ -14,10 +14,10 @@ interface ILeadStatics extends Model<ILeads> {
 }
 
 const LeadsSchema = new Schema<ILeads>({
-    name: { type: String, required: true },
-    query: String,
-    leadSrc: String,
-    propertyType: String,
+    name: { type: String, required: true, trim: true },
+    query: {type: String, trim: true},
+    leadSrc: {type: String, trim: true},
+    propertyType: {type: String, trim: true},
     status: {
         type: String,
         enum: ['newLeads', 'contacted'],
