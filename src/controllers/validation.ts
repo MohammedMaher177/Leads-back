@@ -7,7 +7,7 @@ export const create = Joi.object({
 });
 
 export const update = Joi.object({
-  name: Joi.string().trim().required(),
-  status: Joi.string().valid('newLeads', 'contacted').required(),
-  date: Joi.date().required(),
+  name: Joi.string().trim(),
+  status: Joi.string().valid('newLeads', 'contacted'),
+  date: Joi.date(),
 });
